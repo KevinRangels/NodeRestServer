@@ -6,16 +6,21 @@ const usersGet = (req, res = response) => {
     });
 }
 
+const userPost =  (req, res) => {
+
+    const {nombre, edad} = req.body;
+
+    res.json({
+        msg: 'post API - Controller',
+        nombre,
+        edad
+    })
+}
+
 const userPut = (req, res = response) => {
     res.json({
         msg: 'put API - Controller'
     });
-}
-
-const userPost =  (req, res) => {
-    res.json({
-        msg: 'post API - Controller'
-    })
 }
 
 const userDelete = (req, res) => {
