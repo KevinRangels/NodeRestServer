@@ -8,9 +8,9 @@ router.get('/', usersGet);
 
 router.post('/', userPost);
 
-router.put('/', userPut);
+router.put('/:id', userPut);
 
-router.delete('/', userDelete);
+router.delete('/:id', userDelete);
 
 
 
