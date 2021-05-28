@@ -8,12 +8,23 @@ const usersGet = async(req, res = response) => {
     // Example -> /api/users?q=hola1&nombre=fernando
 
     const { limit = 5, from = 0 } = req.query
+    const query = {state: true}
 
-    const users = await User.find()
-        .skip(Number(from))
-        .limit(Number(limit))
+    // const users = await User.find(query)
+    //     .skip(Number(from))
+    //     .limit(Number(limit))
+
+    // const total = await User.countDocuments(query)
+
+    const [total, users] = await Promise.all([
+        User.countDocuments(query),
+        User.find(query)
+            .skip(Number(from))
+            .limit(Number(limit))
+    ]);
 
     res.json({
+        total,
         users
     });
 }
