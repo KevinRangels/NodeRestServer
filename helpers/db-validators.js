@@ -44,6 +44,20 @@ const categoryIdExist = async(id) => {
     }
 }
 
+/**
+ * Collections
+ */
+ const validCollections = async(collection = '', collections = []) => {
+
+    const include = collections.includes(collection)
+    if (!include) {
+        throw new Error(`This collection ${collection} not permitted - ${collections}`)
+    }
+    
+    return true
+}
+
+
 
 /**
  * Exports
@@ -53,5 +67,6 @@ module.exports = {
     emailExist,
     userIdExist,
     categoryIdExist,
-    productIdExist
+    productIdExist,
+    validCollections
 }
